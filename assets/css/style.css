@@ -1,0 +1,66 @@
+nav .navbar-brand, nav .fa, .fa-chevron-left {
+  color: #3498db;
+}
+
+nav .dropdown-menu .fa {
+  color: #34495e;
+}
+
+.panel-footer a {
+  text-decoration: none;
+}
+
+#details_panel {
+  background-color: #337AB7;
+}
+
+.panel-primary a {
+  color: #337AB7;
+}
+
+#tasks_panel {
+  background-color: #5CB85C;
+}
+
+.panel-success a {
+  color: #5CB85C;
+}
+
+#orders_panel {
+  background-color: #F0AD4E;
+}
+
+.panel-warning a {
+  color: #F0AD4E;
+}
+
+#tickets_panel {
+  background-color: #D9534F;
+}
+
+.panel-danger a {
+  color: #D9534F;
+}
+
+.panel-body {
+  color: #ffffff;
+}
+
+.panel .huge {
+  font-size: 50px;
+}
+
+.form_container {
+  display: block;
+  background-color: #1abc9c;
+  padding: 10px;
+}
+
+.optionbuttons, table th {
+  text-align: center;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #3498db;
+  color: #ffffff;
+}
