@@ -3,25 +3,60 @@
   <hr>
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3 col-xs-12 col-xs-offset-0">
-      <div class="form-container">
+      <div class="form_container">
 
         <?php $attributes = array('id' => 'edit_user_form' , 'class' => 'form_horizontal' ); ?>
+        
         <?php echo validation_errors("<p class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>"); ?>
 
         <?php if($this->session->flashdata('errors')): echo $this->session->flashdata('errors'); ?>
         <?php endif; ?>
 
         <?php echo form_open('users/edit/' . $user['id'] , $attributes); ?>
+
         <div class="form-group">
 
-          <?php echo form_label('Name'); ?>
+          <?php echo form_label('First Name'); ?>
 
           <?php
             $data = array(
               'class' => 'form-control',
-              'name'  => 'name',
-              'placeholder' => 'Please enter your name',
-              'value' => $user['name']
+              'name'  => 'first_name',
+              'placeholder' => 'Please enter your first name',
+              'value' => $user['first_name']
+            );
+            echo form_input($data);
+          ?>
+
+        </div>
+
+        <div class="form-group">
+
+          <?php echo form_label('Last Name'); ?>
+
+          <?php
+            $data = array(
+              'class' => 'form-control',
+              'name'  => 'last_name',
+              'placeholder' => 'Please enter your last name',
+              'value' => $user['last_name']
+            );
+            echo form_input($data);
+          ?>
+
+        </div>
+
+        <div class="form-group">
+
+          <?php echo form_label('Email'); ?>
+
+          <?php
+            $data = array(
+              'class' => 'form-control',
+              'name'  => 'email',
+              'placeholder' => 'Please enter your email',
+              'type'  => 'email',
+              'value' => $user['email']
             );
             echo form_input($data);
           ?>
@@ -53,7 +88,7 @@
               'class' => 'form-control',
               'name'  => 'password',
               'type'  => 'password',
-              'value' => $user['password']
+              'value' => $this->encrypt->decode($user['password'])
             );
             echo form_password($data);
           ?>

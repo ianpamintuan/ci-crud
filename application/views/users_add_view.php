@@ -16,14 +16,47 @@
 
         <div class="form-group">
 
-          <?php echo form_label('Name'); ?>
+          <?php echo form_label('First Name'); ?>
 
           <?php
             $data = array(
               'class' => 'form-control',
-              'name'  => 'name',
-              'placeholder' => 'Please enter your name',
-              'value' => $this->input->post('name')
+              'name'  => 'first_name',
+              'placeholder' => 'Please enter your first name',
+              'value' => $this->input->post('first_name')
+            );
+            echo form_input($data);
+          ?>
+
+        </div>
+
+        <div class="form-group">
+
+          <?php echo form_label('Last Name'); ?>
+
+          <?php
+            $data = array(
+              'class' => 'form-control',
+              'name'  => 'last_name',
+              'placeholder' => 'Please enter your last name',
+              'value' => $this->input->post('last_name')
+            );
+            echo form_input($data);
+          ?>
+
+        </div>
+
+        <div class="form-group">
+
+          <?php echo form_label('Email'); ?>
+
+          <?php
+            $data = array(
+              'class' => 'form-control',
+              'name'  => 'email',
+              'placeholder' => 'Please enter your email',
+              'type'  => 'email',
+              'value' => $this->input->post('email')
             );
             echo form_input($data);
           ?>
