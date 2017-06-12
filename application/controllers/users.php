@@ -79,9 +79,15 @@ class Users extends CI_Controller {
   public function delete($user_id)
   {
 
-    $this->users_model->delete_user($user_id);
-    $this->session->set_flashdata('user_deleted', 'User has been successfully deleted.');
-    redirect('users/index');
+    if(is_numeric($user_id)===FALSE || $user_id==0) {
+      redirect('404');
+    } else {
+
+      $this->users_model->delete_user($user_id);
+      $this->session->set_flashdata('user_deleted', 'User has been successfully deleted.');
+      redirect('users/index');
+      
+    }
 
   }
 

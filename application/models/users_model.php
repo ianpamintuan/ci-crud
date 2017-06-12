@@ -21,6 +21,21 @@ class Users_model extends CI_Model {
 
   }
 
+  public function login($username, $password) {
+
+      $this->db->where('username', $username);
+      $this->db->where('password', $password);
+      $query = $this->db->get('users');
+
+      if($query->num_rows() == 1) {
+        $ret = $query->row_array();
+        return $ret->id;
+      } else {
+        return false;
+      }
+
+  }
+
   public function add_user() {
 
     $pass = $this->input->post('password');
