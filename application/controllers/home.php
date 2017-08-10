@@ -29,7 +29,7 @@ class Home extends CI_Controller {
 
       $username = $this->input->post('username');
       $password = $this->input->post('password');
-
+ 
       $user_id = $this->users_model->login($username, $password);
 
       if ($user_id) {
@@ -46,7 +46,7 @@ class Home extends CI_Controller {
       } else {
 
         $this->session->set_flashdata('user_login', 'Incorrect username or password!');
-        redirect('home');
+        redirect('home/login');
 
       }
 

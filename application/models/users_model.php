@@ -23,6 +23,11 @@ class Users_model extends CI_Model {
 
   public function login($username, $password) {
 
+      $hashFormat = "$2y$10";
+      $salt = "thisismysaltonpassword";
+
+      $password = crypt($password, $hashFormat . $salt);
+
       $this->db->where('username', $username);
       $this->db->where('password', $password);
       $query = $this->db->get('users');
@@ -38,8 +43,11 @@ class Users_model extends CI_Model {
 
   public function add_user() {
 
+    $hashFormat = "$2y$10";
+    $salt = "thisismysaltonpassword";
+
     $pass = $this->input->post('password');
-    $encripted_pass = $this->encrypt->encode($pass);
+    $encripted_pass = crypt($pass, $hashFormat . $salt);
 
     $data = array(
       'first_name'  => $this->input->post('first_name'),
@@ -57,8 +65,11 @@ class Users_model extends CI_Model {
 
   public function update_user($id) {
 
+    $hashFormat = "$2y$10";
+    $salt = "thisismysaltonpassword";
+
     $pass = $this->input->post('password');
-    $encripted_pass = $this->encrypt->encode($pass);
+    $encripted_pass = crypt($pass, $hashFormat . $salt);
 
     $data = array(
       'first_name'  => $this->input->post('first_name'),
