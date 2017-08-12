@@ -33,8 +33,7 @@ class Users_model extends CI_Model {
       $query = $this->db->get('users');
 
       if($query->num_rows() == 1) {
-        $ret = $query->row_array();
-        return $ret->id;
+        return $query->row(0)->id;
       } else {
         return false;
       }

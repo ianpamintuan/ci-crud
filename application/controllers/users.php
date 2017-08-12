@@ -44,8 +44,7 @@ class Users extends CI_Controller {
 
   }
 
-  public function edit($user_id)
-  {
+  public function edit($user_id) {
 
     $this->form_validation->set_rules('first_name', 'First Name', 'trim|required|min_length[3]');
     $this->form_validation->set_rules('last_name', 'Last Name', 'trim|required|min_length[3]');
@@ -76,8 +75,7 @@ class Users extends CI_Controller {
 
   }
 
-  public function delete($user_id)
-  {
+  public function delete($user_id) {
 
     if(is_numeric($user_id)===FALSE || $user_id==0) {
       redirect('404');
@@ -87,6 +85,50 @@ class Users extends CI_Controller {
       $this->session->set_flashdata('user_deleted', 'User has been successfully deleted.');
       redirect('users/index');
       
+    }
+
+  }
+
+  public function login() {
+
+    $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[3]');
+    $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[3]');
+
+    if ($this->form_validation->run() == FALSE) {
+
+      $data = array(
+          'errors' => validation_errors()
+      );
+
+      $this->session->set_flashdata($data);
+      redirect('home');
+
+
+    } else {
+
+      $username = $this->input->post('username');
+      $password = $this->input->post('password');
+ 
+      $user_id = $this->users_model->login($username, $password);
+
+      if ($user_id) {
+
+        $user_data = array(
+          'user_id'  => $user_id,
+          'username' => $username,
+          'logged_in'=> true
+        );
+
+        $this->session->set_userdata($user_data);
+        redirect('dashboard/index');
+
+      } else {
+
+        $this->session->set_flashdata('user_login', 'Incorrect username or password!');
+        redirect('home');
+
+      }
+
     }
 
   }

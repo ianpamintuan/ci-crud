@@ -15,7 +15,7 @@
         <?php if($this->session->flashdata('user_login')): echo "<p class='alert alert-danger alert-dismissable fade in'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>" . $this->session->flashdata('user_login'); ?>
         <?php endif; ?>
 
-        <?php echo form_open('home/login', $attributes); ?>
+        <?php echo form_open('users/login', $attributes); ?>
 
         <div class="form-group">
 
